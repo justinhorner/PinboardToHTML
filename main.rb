@@ -51,7 +51,7 @@ bookmarks.each_with_index do |singleBookmark,index|
 	builder.bookmarks << Markio::Bookmark.create({
   		:title => singleBookmark["description"],
   		:href => singleBookmark['href'],
-			:folder => singleBookmark['tag'].drop(1),
+			:folders => singleBookmark['tag'].delete_if { |f| f == tags},
   		:add_date => date
 	})
 end
