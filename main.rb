@@ -18,6 +18,7 @@ file = File.read('config.json')
 fileHash = JSON.parse(file)
 PinboardApiToken = fileHash['PinboardApiToken']
 lastUpdate = fileHash['lastUpdate']
+tags = fileHash['Tags']
 
 # pinboard
 pinboard = Pinboard::Client.new(:token => PinboardApiToken)
@@ -25,14 +26,15 @@ pinboard = Pinboard::Client.new(:token => PinboardApiToken)
 # check if pinboard data update is needed, if so save pinboards bookmarks to file
 if (Time.now.to_i - lastUpdate.to_i) >= 900
 	puts "Getting live copy"
-	pinboardPosts = pinboard.posts()
+	pinboardPosts = pinboard.posts(:tag => tags)
 	File.open("pinboard-data.json","w") do |f|
   		f.write(JSON.pretty_generate(JSON.parse(pinboardPosts.to_json)))
 	end
 	lastUpdate = Time.now.to_i
 	configHash = {
     "PinboardApiToken" => PinboardApiToken,
-    "lastUpdate" => lastUpdate
+    "lastUpdate" => lastUpdate,
+		"Tags" => tags
 	}
 	File.open("config.json","w") do |f|
   		f.write(JSON.pretty_generate(JSON.parse(configHash.to_json)))
