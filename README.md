@@ -12,6 +12,6 @@ Yes I realize Pinboard already has a tool for exporting, however I wanted to get
 4. run `ruby main.rb`
 5. see outputted bookmarks.html file
 
-# Tags {#tags}
+# Tags
 
 The Tags parameter in the config.json file is a string with each value seperated by an empty space ' ' (just link in Pinboard)
