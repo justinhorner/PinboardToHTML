@@ -14,4 +14,4 @@ Yes I realize Pinboard already has a tool for exporting, however I wanted to get
 
 # Tags
 
-The (optional) Tags parameter in the config.json file is a string with each value seperated by an empty space ' ' (just link in Pinboard)
+The (optional) Tags parameter in the config.json file allows you to only back up bookmarks that meet certain criteria.  The value should be a string with each tag being separated by an empty string (e.g. 'bookmarks news').  **The Tags field is limited to 3 tags**
